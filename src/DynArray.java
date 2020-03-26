@@ -70,7 +70,7 @@ public class DynArray<T> {
         for (int i = 0; i < (count - index); i++) {
             array[index + i] = tempAr[i];
         }
-        if (count-- <= (capacity / 1.5)) {
+        if (--count < (capacity / 2)) {
             makeArray((int) (capacity / 1.5));
         }
     }
