@@ -8,9 +8,8 @@ public class DynArray<T> {
     Class clazz;
 
     public DynArray(Class clz) {
-        clazz = clz; // нужен для безопасного приведения типов
+        clazz = clz;
         // new DynArray<Integer>(Integer.class);
-
         count = 0;
         makeArray(16);
     }
@@ -29,7 +28,7 @@ public class DynArray<T> {
         try {
             return array[index];
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за границы массива!");
+            throw new ArrayIndexOutOfBoundsException("Index Out Of Bounds Exception");
         }
     }
 
@@ -43,7 +42,7 @@ public class DynArray<T> {
 
     public void insert(T itm, int index) throws ArrayIndexOutOfBoundsException {
         if (index > count || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за границы массива!");
+            throw new ArrayIndexOutOfBoundsException("Index Out Of Bounds Exception");
         }
         if (count >= capacity) {
             makeArray(capacity * 2);
@@ -60,9 +59,9 @@ public class DynArray<T> {
         count++;
     }
 
-    public void remove(int index) {
+    public void remove(int index) throws ArrayIndexOutOfBoundsException {
         if (index > (count - 1) || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за границы массива!");
+            throw new ArrayIndexOutOfBoundsException("Index Out Of Bounds Exception");
         }
         T tempAr[] = (T[]) Array.newInstance(this.clazz, count - index);
         for (int i = 0; i < count - index - 1; i++) {
